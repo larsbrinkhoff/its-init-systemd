@@ -1,0 +1,16 @@
+[Unit]
+Description=Incompatible Timesharing System
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/its
+ExecStart=/bin/sh ./its.sh start
+ExecStop=/bin/sh ./its.sh stop
+Restart=always
+RestartSec=10
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target
